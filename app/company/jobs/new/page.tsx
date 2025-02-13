@@ -32,7 +32,8 @@ export default function NewJobPage() {
         description: response.message,
         variant: "default",
       });
-      setTimeout(() => router.push("/company/jobs"), 1500); // Redirect after delay
+      router.refresh();
+      router.push("/company/jobs");
     } else {
       toast({
         title: "Error",
