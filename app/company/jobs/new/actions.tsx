@@ -3,6 +3,7 @@
 "use server";
 
 import { createJob } from "@/lib/actions/jobs";
+import { revalidatePath } from "next/cache";
 
 export async function createNewJobAction(formData: FormData) {
   try {
@@ -12,6 +13,8 @@ export async function createNewJobAction(formData: FormData) {
     const location = formData.get("location") as string;
     const salary_range = formData.get("salary_range") as string;
     await createJob({ title, description, category, location, salary_range });
+    // Force revalidate `/company/jobs`
+    revalidatePath("/company/jobs");
     return { success: true, message: "New job created successfully!" };
   } catch (error) {
     console.error("Error posting new job:", error);
