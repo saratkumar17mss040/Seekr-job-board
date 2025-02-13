@@ -15,11 +15,11 @@ import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 interface ApplyPageProps {
-  params: { jobId: string };
   searchParams: { [key: string]: string | string[] | undefined };
 }
 
-export default function ApplyPage({ params }: ApplyPageProps) {
+export default function ApplyPage() {
+
   const router = useRouter();
   const { toast } = useToast();
   const { jobId } = useParams();

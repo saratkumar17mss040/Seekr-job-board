@@ -8,7 +8,8 @@ import Link from "next/link";
 import JobFilterForm from "@/components/JobFilterForm";
 
 interface JobsPageProps {
-  searchParams: { [key: string]: string | undefined };
+  params: Promise<{ id: string }>;
+  searchParams: Promise<{ [key: string]: string | undefined }>;
 }
 
 export default async function JobsPage({ searchParams }: JobsPageProps) {

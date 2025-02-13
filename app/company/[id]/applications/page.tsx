@@ -5,17 +5,22 @@ import { getApplicationsByJobId } from "@/lib/actions/applications";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 interface ApplicationsPageProps {
-  params: { id: string };
-  searchParams: { [key: string]: string | string[] | undefined };
+  params: Promise<{ id: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }
 
+// earlier, i had interface without Promise - not works
+// without Promise - also not works - :(
 export default async function ApplicationsPage({
   params,
   searchParams,
 }: ApplicationsPageProps) {
-  const jobId = Number(params.id);
-  const jobTitle =
-    typeof searchParams.title === "string" ? searchParams.title : "Job";
+  const { id } = await params;
+  const jobId = Number(id);
+  const { title } = await searchParams;
+  const jobTitle = typeof title === "string" ? title : "Job";
+  // const jobTitle =
+  //   typeof searchParams.title === "string" ? searchParams.title : "Job";
 
   const applications = await getApplicationsByJobId(jobId);
 

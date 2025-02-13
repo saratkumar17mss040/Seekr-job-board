@@ -5,7 +5,7 @@ import { getApplicationsByJobId } from "@/lib/actions/applications";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 interface ApplicationsPageProps {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }
 
 export default async function ApplicationsPage({

@@ -1,14 +1,14 @@
 // Handles job update (PUT) and deletion (DELETE) through JobId
 
 // app/api/jobs/[id]/route.ts
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import pool from "@/lib/db";
 
 export async function DELETE(
-  request: Request,
-  { params }: { params: { id: string } }
+  request: NextRequest,
+  context: { params: Promise<{ id: string }> }
 ) {
-  const { id } = await params;
+  const { id } = await context.params;
   const jobId = Number(id);
   try {
     await pool.query("DELETE FROM jobs WHERE id = $1", [jobId]);
@@ -23,11 +23,9 @@ export async function DELETE(
 
 export async function PUT(
   request: Request,
-  { params }: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
-  const { id } = await params;
-  console.log(id);
-  
+  const { id } = await context.params;
   const jobId = Number(id);
   const formData = await request.formData();
   const title = formData.get("title") as string;

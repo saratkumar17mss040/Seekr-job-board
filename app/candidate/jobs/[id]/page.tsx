@@ -6,7 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Link from "next/link";
 
 interface JobDetailPageProps {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }
 
 export default async function JobDetailPage({ params }: JobDetailPageProps) {
@@ -30,7 +30,11 @@ export default async function JobDetailPage({ params }: JobDetailPageProps) {
           <p>Location: {job.location || "N/A"}</p>
           <p>Salary Range: {job.salary_range || "N/A"}</p>
         </div>
-        <Link href={`/candidate/apply/${job.id}?title=${encodeURIComponent(job.title)}`}>
+        <Link
+          href={`/candidate/apply/${job.id}?title=${encodeURIComponent(
+            job.title
+          )}`}
+        >
           <button className="mt-4 inline-flex items-center rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700">
             Apply Now
           </button>
