@@ -32,8 +32,8 @@ export default function NewJobPage() {
         description: response.message,
         variant: "default",
       });
-      router.refresh();
       router.push("/company/jobs");
+      router.refresh();
     } else {
       toast({
         title: "Error",
