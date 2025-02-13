@@ -34,6 +34,7 @@ export default function NewJobPage() {
       });
       router.push("/company/jobs");
       router.refresh();
+      window.location.reload();
     } else {
       toast({
         title: "Error",
