@@ -14,6 +14,7 @@ export async function createNewJobAction(formData: FormData) {
     const salary_range = formData.get("salary_range") as string;
     await createJob({ title, description, category, location, salary_range });
     // Force revalidate `/company/jobs`
+    // this is needed for production to reflect new changes
     revalidatePath("/company/jobs");
     return { success: true, message: "New job created successfully!" };
   } catch (error) {
