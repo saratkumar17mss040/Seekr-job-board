@@ -23,11 +23,6 @@ export default async function JobsPage({ searchParams }: JobsPageProps) {
   };
   const jobs: Job[] = await getJobs(filters);
 
-  // const handleFilter = async (filters) => {
-  //   const filteredJobs = await getJobs(filters);
-  //   setJobs(filteredJobs);
-  // };
-
   return (
     <div className="container mx-auto px-4">
       <h2 className="text-xl font-semibold mb-4">Available Jobs</h2>

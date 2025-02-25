@@ -3,27 +3,11 @@ import Link from "next/link";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 
-// import { Geist, Geist_Mono } from "next/font/google";
-
-// const geistSans = Geist({
-//   variable: "--font-geist-sans",
-//   subsets: ["latin"],
-// });
-
-// const geistMono = Geist_Mono({
-//   variable: "--font-geist-mono",
-//   subsets: ["latin"],
-// });
-
 export const metadata: Metadata = {
   title: "Seekr Job board App",
   description:
     "A full‑stack job board with Candidate and Company flows - Seek your future",
 };
-
-// class for body element
-// `${geistSans.variable} ${geistMono.variable}
-// className={'antialiased'}
 
 export default function RootLayout({
   children,

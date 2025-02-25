@@ -7,59 +7,16 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-// import MultiSelect from "./MultiSelect";
-// import { useState } from "react";
 
-// const categoryOptions = [
-//   { value: "Engineering", label: "Engineering" },
-//   { value: "Marketing", label: "Marketing" },
-//   { value: "Design", label: "Design" },
-// ];
-
-// const locationOptions = [
-//   { value: "New York", label: "New York" },
-//   { value: "San Francisco", label: "San Francisco" },
-//   { value: "Remote", label: "Remote" },
-// ];
-
-// const salaryOptions = [
-//   { value: "10L", label: "10L" },
-//   { value: "20L", label: "20L" },
-//   { value: "30L", label: "30L" },
-// ];
 
 interface JobFilterFormProps {
   initialFilters: { [key: string]: string | undefined };
-  // onFilterChange: (filters: {
-  //   category?: string[];
-  //   location?: string[];
-  //   salary_range?: string[];
-  //   search?: string;
-  // }) => void;
 }
 
 // onFilterChange,
 
 export default function JobFilterForm({ initialFilters }: JobFilterFormProps) {
   const router = useRouter();
-  // const searchParams = useSearchParams();
-
-  // const [filters, setFilters] = useState({
-  //   category: Array.isArray(initialFilters.category)
-  //     ? initialFilters.category
-  //     : [],
-  //   location: Array.isArray(initialFilters.location)
-  //     ? initialFilters.location
-  //     : [],
-  //   salary_range: Array.isArray(initialFilters.salary_range)
-  //     ? initialFilters.salary_range
-  //     : [],
-  // });
-
-  // const handleMultiSelectChange = (key: string, values: string[]) => {
-  //   setFilters((prev) => ({ ...prev, [key]: values }));
-  //   onFilterChange({ ...filters, [key]: values });
-  // };
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -114,24 +71,6 @@ export default function JobFilterForm({ initialFilters }: JobFilterFormProps) {
           placeholder="Salary Range"
         />
       </div>
-      {/* <MultiSelect
-        label="Category"
-        options={categoryOptions}
-        selected={filters.category}
-        onChange={(values) => handleMultiSelectChange("category", values)}
-      />
-      <MultiSelect
-        label="Location"
-        options={locationOptions}
-        selected={filters.location}
-        onChange={(values) => handleMultiSelectChange("location", values)}
-      />
-      <MultiSelect
-        label="Salary Range (in Lakhs)"
-        options={salaryOptions}
-        selected={filters.salary_range}
-        onChange={(values) => handleMultiSelectChange("salary_range", values)}
-      /> */}
       <div className="sm:col-span-2 md:col-span-3 lg:col-span-4">
         <Button type="submit" className="w-full sm:w-2/3 md:w-1/4 lg:w-1/4">
           Apply Filters
